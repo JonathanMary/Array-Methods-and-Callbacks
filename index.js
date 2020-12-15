@@ -30,7 +30,7 @@ function getFinals(data) {
     }
     return data.filter(finalists);
 }
-console.log(getFinals(fifaData));
+//console.log(getFinals(fifaData));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function called getYears to do the following: 
@@ -60,7 +60,7 @@ function getWinners(array, callback) {
         let away = value["Away Team Goals"];
         if(home > away){
             return value["Home Team Name"];
-        }else/* if*/(home < away){
+        }else/* if(home < away)*/{
             return value["Away Team Name"];
         }/*else{
             return value["Win conditions"].split(" ")[0];
@@ -82,9 +82,17 @@ hint: the strings returned need to exactly match the string in step 4.
  */
 
 function getWinnersByYear(array, getYears, getWinners) {
-    /* code here */
+    let result = [];
+
+    for(let i=0; i<getYears(array, getFinals).length; i++){    
+        result.push(`In ${getYears(array, getFinals)[i]}, ${getWinners(array, getFinals)[i]} won the world cup!`);
+    }
+
+    return result;
 }
 
+//console.log("TEST TASK 5")
+//console.log(getWinnersByYear(fifaData, getYears, getWinners));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
