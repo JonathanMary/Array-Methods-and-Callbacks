@@ -58,6 +58,7 @@ function getWinners(array, callback) {
     function win(value){
         let home = value["Home Team Goals"];
         let away = value["Away Team Goals"];
+        
         if(home > away){
             return value["Home Team Name"];
         }else/* if(home < away)*/{
@@ -105,10 +106,18 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
-   /* code here */
-}
+function getAverageGoals(callback) {
+    const numberOfFinals = callback.length;
 
+    function goals(total, value){
+        let matchGoals = value["Home Team Goals"] + value["Away Team Goals"];
+        return total + matchGoals;
+    }
+    let totalGoals = getFinals(fifaData).reduce(goals, 0);
+
+    return (totalGoals/numberOfFinals).toFixed(2);
+}
+//console.log(getAverageGoals(getFinals));
 
 
 
