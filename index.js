@@ -165,6 +165,7 @@ function foo(){
     console.log('its working');
     return 'bar';
 }
+
 export default{
     foo,
     getFinals,
